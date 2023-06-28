@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "defaultProvider": "unpkg",
+  "libraries": [
+    {
+      "provider": "cdnjs",
+      "library": "6pac-slickgrid@4.0.0",
+      "destination": "wwwroot/lib/6pac-slickgrid/"
+    }
+  ]
+}

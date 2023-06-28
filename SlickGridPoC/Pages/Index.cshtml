@@ -1,0 +1,40 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+@section Scripts
+{
+    <script>
+        var grid;
+        var columns = [
+            { name: "movieId", field: "movieId" },
+            { name: "Title", field: "title" },
+            { name: "Description", field: "description" },
+            { name: "Storyline", field: "storyline" },
+            { name: "Year", field: "year" },
+            { name: "ReleaseDate", field: "releaseDate" },
+            { name: "Runtime", field: "runtime" },
+            { name: "Kind", field: "kind" }
+        ];
+
+        var options = {
+            enableCellNavigation: true,
+            enableColumnReorder: false
+        };
+
+        $(function () {
+            var myData = [];
+            $.getJSON('/api/SlickGrid/GetMovies', function (data) {
+                myData = data;
+                grid = new Slick.Grid("#movieGrid", myData, columns, options);
+            });
+        });
+    </script>
+}
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <div id="movieGrid" style="width:400px;height:300px;"></div>
+</div>
